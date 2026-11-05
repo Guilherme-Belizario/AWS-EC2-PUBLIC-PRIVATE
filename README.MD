@@ -39,27 +39,27 @@ Criar e configurar duas instâncias EC2 na mesma VPC e validar, por meio de coma
 ### 1. Instância privada (somente IPv4 privado)
 Estado *Running*, na subnet privada, sem IPv4 público.
 
-![Instância privada](imagens/01-instancia-privada.png)
+![Instância privada](imagens./01-instancia-privada.png)
 
 ### 2. Instância pública (IPv4 privado e público)
 Estado *Running*, na subnet pública, com IPv4 público atribuído automaticamente.
 
-![Instância pública](imagens/02-instancia-publica.png)
+![Instância pública](imagens./02-instancia-publica.png)
 
 ### 3. Acesso à instância pública e ping para a Internet
 Acesso à instância pública e `ping -c 4 www.google.com`, com resolução de nome e 0% de perda de pacotes.
 
-![Ping para a Internet](imagens/03-ping-internet.png)
+![Ping para a Internet](imagens./03-ping-internet.png)
 
 ### 4. Instância pública → instância privada
 `ping -c 4 10.0.3.172` a partir da instância pública, com respostas e 0% de perda.
 
-![Ping da pública para a privada](imagens/04-ping-publica-para-privada.png)
+![Ping da pública para a privada](imagens./04-ping-publica-para-privada.png)
 
 ### 5. Tentativa de SSH da instância pública para a privada
 O `ssh ec2-user@10.0.3.172` a partir da instância pública retornou `Permission denied (publickey,...)`: a instância pública não tinha a chave privada para autenticar na privada. Por isso, o ping da privada para o IPv4 privado da pública (`10.0.1.56`) não chegou a ser executado nesta etapa.
 
-![SSH da pública para a privada](imagens/05-ssh-publica-para-privada.png)
+![SSH da pública para a privada](imagens./05-ssh-publica-para-privada.png)
 
 ## Resultados
 
